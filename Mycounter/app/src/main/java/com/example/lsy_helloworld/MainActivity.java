@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     int add = 0,timer = 1;
     private TextView textView,textView2;
     private Button button,button2;
+    private ImageButton imageButton;
     private CheckBox checkBox;
 
 
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         button = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
+        imageButton = findViewById(R.id.imageButton);
         textView = findViewById(R.id.number);
         textView2 = findViewById(R.id.textView2);
         checkBox = findViewById(R.id.checkBox);
@@ -59,7 +62,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+        imageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                count = 0;
+                textView.setText(count+"");
+            }
+        });
     }
 
     CheckBox.OnClickListener L4_checkBox_listener = new CheckBox.OnClickListener(){
