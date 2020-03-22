@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     int count = 0;
-    int add = 1,timer = 1;
+    int add = 0,timer = 1;
     private TextView textView,textView2;
     private Button button,button2;
     private CheckBox checkBox;
@@ -41,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ProgressBar progressBar=(ProgressBar)findViewById(R.id.progressBar);//获取控件
                 if(progressBar.getVisibility()==View.GONE){
+                    progressBar.setVisibility(View.VISIBLE);
+                    button2.setText("开始");
+                    textView2.setText("暂停中...");
+
+                    add = 0;
+
+                }
+                else{
 
                     add = timer;
                     button2.setText("暂停");
@@ -48,12 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
                     progressBar.setVisibility(View.GONE);//setVisibility设置控件可见性
                     //View.GONE不可见 View.VISIBLE可见 View.INVISIBLE透明性质，不可见在还占空间
-                }
-                else{
-                    progressBar.setVisibility(View.VISIBLE);
-                    button2.setText("恢复");
-                    textView2.setText("暂停中...");
-                    add = 0;
                 }
             }
         });
@@ -63,14 +65,15 @@ public class MainActivity extends AppCompatActivity {
     CheckBox.OnClickListener L4_checkBox_listener = new CheckBox.OnClickListener(){
         @Override
         public void onClick(View v) {
-            if (add == 1) {
-                add = 2;
+
+
+            if (timer == 1)
                 timer = 2;
-            }
-            else if (add == 2){
-                add = 1;
+            else
                 timer = 1;
-            }
+
+            if(add != 0)
+                add = timer;
         }
     };
 
